@@ -9,13 +9,11 @@ class Ability:
 
     def attack(self): # Return attack value
         # Calculate lowest attack value as an integer
-        full_attack = 20
-        lowest_attack = full_attack // 2
+        lowest_attack_value = self.attack_strength // 2
         # Use random.randit(a, b) to select a random attack value.
-        attack_value = random(lowest_attack, full_attack)
+        attack_strength = random.randint(lowest_attack_value, self.attack_strength)
         # Return attack value between 0 and the full attack
-        return attack_value
-
+        return attack_strength
 
     def update_attack(self, attack_strength): # Update attack value
         attack_value = attack_strength
@@ -23,17 +21,21 @@ class Ability:
 class Hero:
     def __init__(self, name):
         # Initialize starting values
-        self.abilities = list() self.name = name
+        self.abilities = list()
+        self.name = name
 
     def add_ability(self, ability):
         # Add ability to abilities list
-        self.abilities.append(new_ability)
+        self.abilities.append(ability)
 
-    def attack(self): # Run attack() on every ability hero has
-        # Call the attack method on every ability in our ability list
-        # Add up and return the total of all attacks
+    def attack(self):
+        total_attack = 0
+        for add_attack in self.abilities:
+            total_attack += add_attack.attack()
+        return total_attack
 
-if name == "__main__": # If you run this file from the terminal this block is executed.
+if __name__ == "__main__": # If you run this file from the terminal this block is executed.
+    print("Hello World")
     hero = Hero("Wonder Woman")
     print(hero.attack())
     ability = Ability("Divine Speed", 300)
