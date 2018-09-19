@@ -34,6 +34,55 @@ class Hero:
             total_attack += add_attack.attack()
         return total_attack
 
+class Weapon(Ability):
+    def attack(self):
+        """
+        This method should return a random value between 0
+        and the full attack power of the weapon.
+        Hint: The attack power is inherited.
+        """
+
+class Team:
+    def init(self, team_name):
+        """Instantiate resources."""
+        self.name = team_name
+        self.heroes = list()
+
+def add_hero(self, Hero):
+    """Add Hero object to heroes list."""
+    self.heroes.append(hero)
+
+def remove_hero(self, name):
+    """
+    Remove hero from heroes list.
+    If Hero isn't found return 0.
+    """
+    self.heroes.remove(hero)
+    if hero
+
+def find_hero(self, name):
+    """
+    Find and return hero from heroes list.
+    If Hero isn't found return 0.
+    """
+
+def view_all_heroes(self):
+    """Print out all heroes to the console."""
+
+
+class Armor:
+    def __init__(self, name, defense):
+        """Instantiate name and defense strength. """
+        self.name = __name__
+        self.defense = defense
+
+    def defend(self):
+        """
+        Return a random value between 0 and the
+        initialized defend strength.
+        """
+
+
 if __name__ == "__main__": # If you run this file from the terminal this block is executed.
     print("Hello World")
     hero = Hero("Wonder Woman")
