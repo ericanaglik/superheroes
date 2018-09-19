@@ -42,32 +42,56 @@ class Weapon(Ability):
         Hint: The attack power is inherited.
         """
 
+        return random.randint(0, self.attack_strength)
+
 class Team:
-    def init(self, team_name):
+    def __init__(self, team_name):
         """Instantiate resources."""
         self.name = team_name
         self.heroes = list()
 
-def add_hero(self, Hero):
-    """Add Hero object to heroes list."""
-    self.heroes.append(hero)
+    def add_hero(self, Hero):
+        """Add Hero object to heroes list."""
+        self.heroes.append(Hero)
 
-def remove_hero(self, name):
-    """
-    Remove hero from heroes list.
-    If Hero isn't found return 0.
-    """
-    self.heroes.remove(hero)
-    if hero
+    def remove_hero(self, name):
+        """
+        Remove hero from heroes list.
+        If Hero isn't found return 0.
+        """
 
-def find_hero(self, name):
-    """
-    Find and return hero from heroes list.
-    If Hero isn't found return 0.
-    """
+        if self.heroes != []:
+            for hero in self.heroes:
+                if name in hero.name:
+                    self.heroes.remove(hero)
+                else:
+                    return 0
+        else:
+            return 0
 
-def view_all_heroes(self):
-    """Print out all heroes to the console."""
+
+
+
+    def find_hero(self, name):
+        """
+        Find and return hero from heroes list.
+        If Hero isn't found return 0.
+        """
+
+        if self.heroes != []:
+            for hero in self.heroes:
+                if name == hero.name:
+                    return hero
+                else:
+                    return 0
+        else:
+            return 0
+
+    def view_all_heroes(self):
+        """Print out all heroes to the console."""
+        for hero in self.heroes:
+            name = hero.name
+            print(name)
 
 
 class Armor:
