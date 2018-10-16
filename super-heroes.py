@@ -270,13 +270,13 @@ def create_hero():
     print("Please give your hero weapons: ")
     i = None
     while(i != "done".lower()):
-        hero.add_ability(create_ability())
+        hero.add_ability(create_weapon())
         i = input("Add more weapons? Press enter to keep adding or type 'done' to finish adding weapons. ")
 
     print("Please give your hero armor: ")
     i = None
     while(i != "done".lower()):
-        hero.add_ability(create_ability())
+        hero.add_ability(create_armor())
         i = input("Add more armor? Press enter to keep adding or type 'done' to finish adding armor. ")
     print("Your hero is ready!! It's time to play!")
 
@@ -295,11 +295,11 @@ def create_armor():
 
 
 if __name__ == "__main__":
-    battle_zone =  Arena(int(input("What is the size of your team?: ")))
     running = True
-    battle_zone.build_team_one()
-    battle_zone.build_team_two()
     while(running):
+        battle_zone =  Arena(int(input("What is the size of your team?: ")))
+        battle_zone.build_team_one()
+        battle_zone.build_team_two()
         print(battle_zone.team_battle())
         i = input("Would you like to play again? (yes/no): ")
         if( i == "no"):
@@ -309,20 +309,20 @@ if __name__ == "__main__":
             print(battle_zone.team_one.heroes[0].health)
             battle_zone.team_two.revive_heroes()
 
-if __name__ == "__main__":
-    battle_zone =  Arena(int(input("What is the size of your team?: ")))
-    running = True
-    battle_zone.build_team_one()
-    battle_zone.build_team_two()
-    while(running):
-        print(battle_zone.team_battle())
-        i = input("Would you like to play again? (yes/no): ")
-        if( i == "no"):
-            running = False
-        else:
-            battle_zone.team_one.revive_heroes()
-            print(battle_zone.team_one.heroes[0].health)
-            battle_zone.team_two.revive_heroes()
+# if __name__ == "__main__":
+#     battle_zone =  Arena(int(input("What is the size of your team?: ")))
+#     running = True
+#     battle_zone.build_team_one()
+#     battle_zone.build_team_two()
+#     while(running):
+#         print(battle_zone.team_battle())
+#         i = input("Would you like to play again? (yes/no): ")
+#         if( i == "no"):
+#             running = False
+#         else:
+#             battle_zone.team_one.revive_heroes()
+#             print(battle_zone.team_one.heroes[0].health)
+#             battle_zone.team_two.revive_heroes()
 
 # if __name__ == "__main__":
 #     hero = Hero("Super Man")
