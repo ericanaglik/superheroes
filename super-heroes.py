@@ -106,6 +106,7 @@ class Team:
         self.heroes = list()
         self.team_kills = 0
         self.team_health = 0
+        self.total_health = 0
 
     def add_hero(self, Hero):
         """Add Hero object to heroes list."""
@@ -185,8 +186,9 @@ class Team:
 
         This data must be output to the terminal.
         """
-        for hero in self.heroes:
-            print("Hero: " + hero.name + " has kills/deaths: " + hero.kills + "//" + hero.deaths)
+        for kill in self.heroes:
+            print(kill.name + "Kills: " + str(kill.kills) + " Deaths:" + str(kill.deaths))
+
     def update_kills(self):
         """
         This method should update each hero when there is a team kill.
@@ -249,15 +251,14 @@ class Arena:
         """
         This method should continue to battle teams until one or both teams are dead.
         """
-        def team_battle(self):
-            while(self.team_one.total_health>0 and self.team_two.total_health>0):
-                self.team_one.attack(self.team_two)
-                self.team_two.attack(self.team_one)
-                print("hi")
-                self.show_stats()
-            if(self.team_one.heroes[0].deaths==1):
-                return self.team_one.name
-            return self.team_two.name
+        while(self.team_one.total_health>0 and self.team_two.total_health>0):
+            self.team_one.attack(self.team_two)
+            self.team_two.attack(self.team_one)
+            print("hi")
+            self.show_stats()
+        if(self.team_one.heroes[0].deaths==1):
+            return self.team_one.name
+        return self.team_two.name
 
 
     def show_stats(self):
