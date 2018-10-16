@@ -212,11 +212,12 @@ class Team:
             print(name)
 
 class Arena:
-    def __init__(self):
+    def __init__(self, team_size):
 
         self.team_one = None
         self.team_two = None
         self.team_size = team_size
+
 
     def build_team_one(self):
         """
@@ -257,13 +258,63 @@ class Arena:
             self.team_one.stats()
             self.team_two.stats()
 
+    def create_hero():
+        hero = Hero(input("Please name your hero: "))
+
+        print("Please give your hero abilities: ")
+        i = None
+        while(i != "done".lower()):
+            hero.add_ability(create_ability())
+            i = input("Add more abilities? Press enter to keep adding or type 'done' to finish adding heroes. ")
+
+        print("Please give your hero weapons: ")
+        i = None
+        while(i != "done".lower()):
+            hero.add_ability(create_ability())
+            i = input("Add more weapons? Press enter to keep adding or type 'done' to finish adding weapons. ")
+
+        print("Please give your hero armor: ")
+        i = None
+        while(i != "done".lower()):
+            hero.add_ability(create_ability())
+            i = input("Add more armor? Press enter to keep adding or type 'done' to finish adding armor. ")
+        print("Your hero is ready!! It's time to play!")
+
+    def create_ability():
+        ability = Ability(input("What is the name of the ability? "), int(input("What is the strength level of the ability? ")))
+        return ability
+
+    def create_weapon():
+        ability = Ability(input("What is the name of the weapon? "), int(input("What is the strength level of the weapon? ")))
+        return weapon
+
+    def create_ability():
+        ability = Ability(input("What is the name of the armor? "), int(input("What is the strength level of the armor? ")))
+        return armor
+
+
 
 if __name__ == "__main__":
-    hero = Hero("Super Man")
-    print(hero.attack())
-    ability = Ability("Laser Eyes", 600)
-    hero.add_ability(ability)
-    print(hero.attack())
-    new_ability = Ability("Super Strength", 1000)
-    hero.add_ability(new_ability)
-    print(hero.attack())
+    battle_zone =  Arena(int(input("What is the size of your team?: ")))
+    running = True
+    battle_zone.build_team_one()
+    battle_zone.build_team_two()
+    while(running):
+        print(battle_zone.team_battle())
+        i = input("Would you like to play again? (yes/no): ")
+        if( i == "no"):
+            running = False
+        else:
+            battle_zone.team_one.revive_heroes()
+            print(battle_zone.team_one.heroes[0].health)
+            battle_zone.team_two.revive_heroes()
+
+# if __name__ == "__main__":
+#     hero = Hero("Super Man")
+#     print(hero.attack())
+#     ability = Ability("Laser Eyes", 600)
+#     hero.add_ability(ability)
+#     print(hero.attack())
+#     new_ability = Ability("Super Strength", 1000)
+#     hero.add_ability(new_ability)
+#     print(hero.attack())
