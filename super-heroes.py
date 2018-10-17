@@ -52,7 +52,9 @@ class Hero:
         total_attack = 0
         if self.abilities != None:
             for ability in self.abilities:
-                total_attack = total_attack + ability.attack()
+                print("hero attack function: ")
+                print(ability)
+                total_attack += ability.attack()
         return total_attack
         # total_attack = 0
         # for add_attack in self.abilities:
@@ -106,7 +108,6 @@ class Team:
         self.heroes = list()
         self.team_kills = 0
         self.team_health = 0
-        self.total_health = 0
 
     def add_hero(self, Hero):
         """Add Hero object to heroes list."""
@@ -186,6 +187,7 @@ class Team:
 
         This data must be output to the terminal.
         """
+        print("cats")
         for kill in self.heroes:
             print(kill.name + "Kills: " + str(kill.kills) + " Deaths:" + str(kill.deaths))
 
@@ -220,11 +222,12 @@ class Team:
             print(name)
 
 class Arena:
-    def __init__(self, team_size):
+    def __init__(self, team_size=1):
 
         self.team_one = None
         self.team_two = None
         self.team_size = team_size
+
 
 
     def build_team_one(self):
@@ -251,7 +254,10 @@ class Arena:
         """
         This method should continue to battle teams until one or both teams are dead.
         """
-        while(self.team_one.total_health>0 and self.team_two.total_health>0):
+        print("loo loo lemon")
+        print(self.team_one.team_health)
+        print(self.team_two.team_health)
+        while(self.team_one.team_health>0 and self.team_two.team_health>0):
             self.team_one.attack(self.team_two)
             self.team_two.attack(self.team_one)
             print("hi")
@@ -266,9 +272,8 @@ class Arena:
         This method should print out the battle statistics
         including each heroes kill/death ratio.
         """
-        def show_stats(self):
-            self.team_one.stats()
-            self.team_two.stats()
+        self.team_one.stats()
+        self.team_two.stats()
 
 def create_hero():
     hero = Hero(input("Please name your hero: "))
@@ -288,7 +293,7 @@ def create_hero():
     print("Please give your hero armor: ")
     i = None
     while(i != "done".lower()):
-        hero.add_ability(create_armor())
+        hero.add_armor(create_armor())
         i = input("Add more armor? Press enter to keep adding or type 'done' to finish adding armor. ")
     print("Your hero is ready!! It's time to play!")
     return hero
@@ -307,20 +312,30 @@ def create_armor():
 
 
 
-if __name__=="__main__":
-    battle_zone =  Arena(int(input("how large is your team: ")))
-    running = True
-    battle_zone.build_team_one()
-    battle_zone.build_team_two()
-    while(running):
-        print(battle_zone.team_battle())
-        ui = input("do you want to play again(yes/no): ")
-        if(ui == "no"):
-            running = False
+if __name__ == "__main__":
+    game_is_running = True
+
+    # Instantiate Game Arena
+    arena = Arena()
+
+    #Build Teams
+    arena.build_team_one()
+    arena.build_team_two()
+
+    while game_is_running:
+
+        arena.team_battle()
+        arena.show_stats()
+        play_again = input("Play Again? Y or N: ")
+
+        #Check for Player Input
+        if play_again.lower() == "n":
+            game_is_running = False
+
         else:
-            battle_zone.team_one.revive_heroes()
-            print(battle_zone.team_one.heroes[0].health)
-            battle_zone.team_two.revive_heroes()
+            #Revive heroes to play again
+            arena.team_one.revive_heroes()
+            arena.team_two.revive_heroes()
 
 # if __name__ == "__main__":
 #     battle_zone =  Arena(int(input("What is the size of your team?: ")))
